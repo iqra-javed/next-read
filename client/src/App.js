@@ -10,13 +10,13 @@ import AddBook from './components/AddBook';
 // apollo client setup
 const client = new ApolloClient({
   uri: 'http://localhost:4000/graphql' // endpoint that we will make requests to
-})
+});
 
 class App extends Component {
   render() {
     return (
       <ApolloProvider client={client}>
-        <div className="App">
+        <div id='main'>
           <h1>Iqra's Reading List</h1>
           <BookList />
           <AddBook />
