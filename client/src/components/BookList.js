@@ -19,7 +19,7 @@ in the component's props */
 class BookList extends Component {
   displayBooks() {
     let data = this.props.data;
-    if (data.loading) {
+    if(data.loading) {
       return <div>Loading books...</div>;
     } else {
       return data.books.map(book => {
