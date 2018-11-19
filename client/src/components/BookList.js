@@ -9,13 +9,26 @@ import BookDetails from './BookDetails';
 that comes back from the query. That data is stored 
 in the component's props */
 class BookList extends Component {
+  state = {
+    selected: null
+  };
+
   displayBooks() {
     let data = this.props.data;
     if (data.loading) {
       return <div>Loading books...</div>;
     } else {
       return data.books.map(book => {
-        return <li key={book.id}>{book.name}</li>;
+        return (
+          <li
+            key={book.id}
+            onClick={e => {
+              this.setState({ selected: book.id });
+            }}
+          >
+            {book.name}
+          </li>
+        );
       });
     }
   }
@@ -23,7 +36,7 @@ class BookList extends Component {
     return (
       <div>
         <ul id='book-list'>{this.displayBooks()}</ul>
-        <BookDetails />
+        <BookDetails bookId={this.state.selected} />
       </div>
     );
   }
