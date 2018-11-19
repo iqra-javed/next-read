@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
 import { getBooksQuery } from '../queries/queries';
 
+// components
+import BookDetails from './BookDetails';
+
 /* bind query to component so we have access to data 
 that comes back from the query. That data is stored 
 in the component's props */
@@ -17,10 +20,10 @@ class BookList extends Component {
     }
   }
   render() {
-    //   console.log(this.props)
     return (
       <div>
         <ul id='book-list'>{this.displayBooks()}</ul>
+        <BookDetails />
       </div>
     );
   }
