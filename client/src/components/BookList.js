@@ -1,25 +1,14 @@
 import React, { Component } from 'react';
-import { gql } from 'apollo-boost'; // helps parse graphql queries for react
 import { graphql } from 'react-apollo';
-
-// make query
-const getBooksQuery = gql`
-  {
-    books {
-      name
-      id
-    }
-  }
-`;
+import { getBooksQuery } from '../queries/queries';
 
 /* bind query to component so we have access to data 
 that comes back from the query. That data is stored 
 in the component's props */
-
 class BookList extends Component {
   displayBooks() {
     let data = this.props.data;
-    if(data.loading) {
+    if (data.loading) {
       return <div>Loading books...</div>;
     } else {
       return data.books.map(book => {
@@ -31,9 +20,7 @@ class BookList extends Component {
     //   console.log(this.props)
     return (
       <div>
-        <ul id='book-list'>
-          {this.displayBooks()}
-        </ul>
+        <ul id='book-list'>{this.displayBooks()}</ul>
       </div>
     );
   }
